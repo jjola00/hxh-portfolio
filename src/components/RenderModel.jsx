@@ -9,8 +9,7 @@ const RenderModel = ({ children, className }) => {
     <div className="w-full h-full">
       <Canvas
         className={clsx("w-screen h-screen relative", className)}
-        style={{ zIndex: 10 }}
-        shadows={false}
+        shadows={true}
         dpr={[1, 2]}
         camera={{
           position: [0, 0, 5],
