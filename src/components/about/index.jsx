@@ -12,29 +12,20 @@ const AboutDetails = () => {
           }
         >
           <h2 className="text-xl md:text-2xl text-left w-full capitalize">
-            Nen Architect
+            Software Developer
           </h2>
           <p className="font-light text-xs sm:text-sm md:text-base">
-            My journey in web development is akin to a Hunter’s quest, seeking 
-            to master the digital landscape with every challenge. Armed with the
-            powerful Nen abilities of JavaScript, I navigate the web with precision,
-            creating intricate, dynamic websites like a seasoned Hunter would track their target.
-            React.js and Next.js are my weapons of choice, allowing me to craft portals (websites)
-            that bridge the worlds of users and data.
+            As a dedicated software developer, I specialize in creating robust and 
+            efficient web applications. With experience in JavaScript and 
+            modern frameworks like React.js and Next.js, I develop responsive and 
+            user-centric solutions that drive business value and enhance user experience.
           </p>
           <p className="font-light mt-2 text-xs sm:text-sm md:text-base">
-            But my quest doesn’t stop there. On the backend, I wield the strengths of Python,
-            Java, and Golang, using each to forge powerful and efficient systems that support
-            my digital creations. These languages are like different Nen abilities, each with
-            its own strengths, allowing me to build fast, scalable, and reliable applications.
-          </p>
-          <p className="font-light mt-2 text-xs sm:text-sm md:text-base">
-            Just as a Hunter learns to adapt, I employ the mystical arts of the Jamstack to create 
-            fast, secure, and seamless user experiences. Every creation is not just functional but 
-            visually captivating, much like a well-executed Nen technique. With each line of code,
-            I’m continually evolving, honing my skills to push the limits of what’s possible on 
-            the web. Join me on this adventure as I explore new technologies and strive to unlock 
-            the hidden potential of the digital world.
+            My technical expertise extends to backend development, where I work with 
+            Python, Java, and Golang to build scalable server-side applications. 
+            This full-stack capability allows me to architect comprehensive solutions 
+            that address complex business requirements while maintaining high performance 
+            and reliability standards.
           </p>
         </ItemLayout>
 
@@ -62,6 +53,8 @@ const AboutDetails = () => {
             className="w-full h-auto"
             src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api/top-langs?username=slocksert&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
             alt="slocksert"
+            width={400}
+            height={300}
             loading="lazy"
           />
         </ItemLayout>
@@ -71,6 +64,8 @@ const AboutDetails = () => {
             className="w-full h-auto"
             src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api?username=slocksert&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
             alt="slocksert"
+            width={800}
+            height={300}
             loading="lazy"
           />
         </ItemLayout>
@@ -80,6 +75,8 @@ const AboutDetails = () => {
             className="w-full h-auto"
             src={`https://skillicons.dev/icons?i=appwrite,aws,babel,bootstrap,cloudflare,css,d3,docker,figma,firebase,gatsby,git,github,graphql,html,ipfs,js,jquery,kubernetes,linux,mongodb,mysql,netlify,nextjs,nodejs,npm,postgres,react,redux,replit,sass,supabase,tailwind,threejs,vercel,vite,vscode,yarn`}
             alt="slocksert"
+            width={1200}
+            height={100}
             loading="lazy"
           />
         </ItemLayout>
@@ -89,6 +86,8 @@ const AboutDetails = () => {
             className="w-full h-auto"
             src={`${process.env.NEXT_PUBLIC_GITHUB_STREAK_STATS_URL}?user=slocksert&theme=dark&hide_border=true`}
             alt="slocksert"
+            width={600}
+            height={300}
             loading="lazy"
           />
         </ItemLayout>
@@ -103,6 +102,8 @@ const AboutDetails = () => {
               className="w-full h-auto"
               src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api/pin/?username=slocksert&repo=rdict&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false&description_lines_count=2`}
               alt="slocksert"
+              width={600}
+              height={300}
               loading="lazy"
             />
           </Link>
