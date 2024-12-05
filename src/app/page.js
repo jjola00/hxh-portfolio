@@ -15,7 +15,7 @@ export default function Home() {
 
         <div className="w-full h-screen">
           <Navigation/>
-          <RenderModel>
+          <RenderModel className="-z-10">
             <Netero />
           </RenderModel>
         </div>
