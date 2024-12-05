@@ -4,7 +4,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
-export default function Model(props) {
+export default function Killua(props) {
   const { nodes, materials } = useGLTF('/models/killua-transformed.glb')
   
   const modelRef = useRef();
