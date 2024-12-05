@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import ProjectLayout from "./ProjectLayout";
+import ProjectButton from "./ProjectButton";
+import useScreenSize from "../hooks/useScreenSize";
+import ResponsiveComponent from "../ResponsiveComponent";
 
 const container = {
   hidden: { opacity: 0 },
@@ -14,17 +16,37 @@ const container = {
 };
 
 const ProjectList = ({ projects }) => {
+  const angleIncrement = 360 / projects.length;
+
   return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      animate="show"
-      className="w-full max-w-auto  xl:max-w-4xl px-4 mx-auto lg:px-16 space-y-6 md:space-y-8 flex flex-col items-center mt-64"
-    >
-      {projects.map((project, index) => {
-        return <ProjectLayout key={index} {...project} />;
-      })}
-    </motion.div>
+    <ResponsiveComponent>
+      {({ size }) => {
+        const isLarge = size >= 1024;
+        const isMedium = size >= 768;
+
+        return (
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="w-max flex items-center justify-center relative hover:pause animate-spin-slow group z-50"
+          >
+            {projects.map((project, index) => {
+              const angleRad = (index * angleIncrement * Math.PI) / 180;
+              const radius = isLarge
+                ? "calc(20vw - 1rem)"
+                : isMedium
+                ? "calc(30vw - 1rem)"
+                : "calc(40vw - 1rem)";
+              const x = `calc(${radius}*${Math.cos(angleRad)})`;
+              const y = `calc(${radius}*${Math.sin(angleRad)})`;
+
+              return <ProjectButton key={project.id} x={x} y={y} {...project} />;
+            })}
+          </motion.div>
+        );
+      }}
+    </ResponsiveComponent>
   );
 };
 
