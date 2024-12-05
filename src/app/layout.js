@@ -11,13 +11,11 @@ const inter = Inter({
 
 export const metadata = {
   title: {
-    template:
-      "",
-    default:
-      "",
+    template: "%s | HxH Portfolio",
+    default: "HxH Portfolio",
   },
   description:
-    "",
+    "My personal website and portfolio, showcasing my projects and blog posts theme based on my favorite anime.",
 };
 
 export default function RootLayout({ children }) {
