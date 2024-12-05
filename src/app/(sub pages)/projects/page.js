@@ -5,7 +5,7 @@ import { projectsData } from "../../data";
 import RenderModel from "@/components/RenderModel";
 import dynamic from "next/dynamic";
 
-const Killua = dynamic(() => import("@/components/models/Killua"), {
+const Gon = dynamic(() => import("@/components/models/Gon"), {
   ssr: false,
 });
 
@@ -25,14 +25,14 @@ export default function Home() {
       />
 
       <div className="absolute inset-0">
-        <div className="w-full h-full">
+        <div className="w-full h-full relative">
           <div className="absolute inset-0 flex items-center justify-center">
             <ProjectList projects={projectsData} />
           </div>
           
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 z-10">
             <RenderModel>
-              <Killua />
+              <Gon />
             </RenderModel>
           </div>
         </div>
