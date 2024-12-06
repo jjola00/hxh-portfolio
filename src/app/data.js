@@ -11,7 +11,9 @@ export const projectsData = [
   {
     id: 2,
     name: "NurseUtils",
-    description: `Help nurses manage the data of other centers and hospitals`,
+    description: `I developed a web application to help nurses manage the data of
+    other centers and hospitals in the region. The app allows users to add, edit,
+    and delete centers, agents and locations. I used Django with MySQL as the database.`,
     date: "2024-10-1",
     demoLink: "https://nurseutils.slocksert.dev",
     tags: ["Django", "MySQL", "Bootstrap", "Python", "Docker"]
