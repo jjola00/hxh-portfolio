@@ -36,10 +36,9 @@ Make sure this works specifically inside the Next.js `app/` directory architectu
 "use client";
 
 import { useRef } from "react";
-import RenderModel from "@/components/RenderModel";
-import Netero from "@/components/models/Netero";
 import Navigation from "@/components/navigation";
 import BackgroundVideo from "@/components/BackgroundVideo";
+import ProfileImage from "@/components/ProfileImage";
 
 export default function Home() {
   const backgroundVideoRef = useRef(null);
@@ -92,9 +91,7 @@ export default function Home() {
 
         <div className="w-full h-screen">
           <Navigation/>
-          <RenderModel className="-z-10">
-            <Netero />
-          </RenderModel>
+          <ProfileImage className="-z-10" />
         </div>
 
       </div>
