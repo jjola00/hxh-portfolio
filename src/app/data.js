@@ -94,26 +94,19 @@ export const projectsData = [
 ];
 
 export const BtnList = [
-  { label: "Home", link: "/", icon: "home", newTab: false },
   { label: "About", link: "/about", icon: "about", newTab: false },
   { label: "Projects", link: "/projects", icon: "projects", newTab: false },
   { label: "Contact", link: "/contact", icon: "contact", newTab: false },
   {
     label: "Github",
-    link: "https://www.github.com/slocksert",
+    link: "https://github.com/jjola00",
     icon: "github",
     newTab: true,
   },
   {
     label: "LinkedIn",
-    link: "https://www.linkedin.com/in/rildosilva1",
+    link: "https://www.linkedin.com/in/jay-jay-olajitan/",
     icon: "linkedin",
-    newTab: true,
-  },
-  {
-    label: "Instagram",
-    link: "https://www.instagram.com/rildosilv/",
-    icon: "instagram",
     newTab: true,
   },
   {
