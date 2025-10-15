@@ -1,5 +1,4 @@
 import {
-  Code,
     Github,
     Home,
     Instagram,
@@ -20,8 +19,6 @@ import {
         return <Home className="w-full h-auto" strokeWidth={1.5} />;
       case "about":
         return <User className="w-full h-auto" strokeWidth={1.5} />;
-      case "projects":
-        return <Code className="w-full h-auto" strokeWidth={1.5} />;
       case "contact":
         return <Phone className="w-full h-auto" strokeWidth={1.5} />;
       case "github":

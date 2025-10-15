@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.2.0",
-    "@react-three/drei": "^9.99.5",
-    "@react-three/fiber": "^8.15.16",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.8",
     "lucide-react": "^0.344.0",
@@ -20,8 +18,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.0",
     "sharp": "^0.33.5",
-    "sonner": "^1.4.3",
-    "three": "^0.162.0"
+    "sonner": "^1.4.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
