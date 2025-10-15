@@ -2,12 +2,6 @@ import Image from "next/image";
 import bg from "../../../../public/background/projects-background.png";
 import ProjectList from "@/components/projects";
 import { projectsData } from "../../data";
-import RenderModel from "@/components/RenderModel";
-import dynamic from "next/dynamic";
-
-const Gon = dynamic(() => import("@/components/models/Gon"), {
-  ssr: false,
-});
 
 export const metadata = {
   title: "Projects",
@@ -30,11 +24,7 @@ export default function Home() {
             <ProjectList projects={projectsData} />
           </div>
           
-          <div className="absolute inset-0 z-10">
-            <RenderModel>
-              <Gon />
-            </RenderModel>
-          </div>
+          {/* 3D model removed */}
         </div>
       </div>
     </main>
