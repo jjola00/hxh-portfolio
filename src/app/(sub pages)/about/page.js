@@ -5,10 +5,6 @@ import AmbientBackground from "@/components/AmbientBackground";
 import BackgroundControls from "@/components/BackgroundControls";
 import { useBackground } from "@/components/BackgroundManager";
 
-export const metadata = {
-  title: "About",
-};
-
 export default function About() {
   const { mode, ambientEffect } = useBackground();
 
