@@ -1,21 +1,26 @@
-import Image from "next/image";
-import bg from "../../../../public/background/about-background.png";
+"use client";
+
 import AboutDetails from "@/components/about";
+import AmbientBackground from "@/components/AmbientBackground";
+import BackgroundControls from "@/components/BackgroundControls";
+import { useBackground } from "@/components/BackgroundManager";
 
 export const metadata = {
   title: "About",
 };
 
-export default function Home() {
+export default function About() {
+  const { mode, ambientEffect } = useBackground();
+
   return (
     <>
-      <Image
-        src={bg}
-        priority
-        sizes="100vw"
-        alt="Next.js Portfolio website's about page background image"
-        className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-50"
-      />
+      {/* Dynamic Background System */}
+      {mode === 'ambient' ? (
+        <AmbientBackground effect={ambientEffect} />
+      ) : null}
+
+      {/* Background Controls */}
+      <BackgroundControls />
 
       <div className="relative w-full h-[100vh] flex flex-col items-center justify-center">
         <div className="absolute flex flex-col items-center text-center top-1/2 sm:top-[60%] left-1/2 -translate-y-1/2 -translate-x-1/2">

@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
+import { useBackground } from './BackgroundManager';
 
 const BackgroundVideo = forwardRef((props, ref) => {
+  const { mode, customVideoIndex, nextVideo } = useBackground();
   const wallpapers = [
     '/wallpapers/Arcane.mp4',
     '/wallpapers/EldenRing.mp4',
@@ -10,7 +12,6 @@ const BackgroundVideo = forwardRef((props, ref) => {
     '/wallpapers/KillBill.mp4'
   ];
 
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const videoRef = useRef(null);
   const intervalRef = useRef(null);
@@ -19,9 +20,7 @@ const BackgroundVideo = forwardRef((props, ref) => {
     setIsTransitioning(true);
     
     setTimeout(() => {
-      setCurrentVideoIndex((prevIndex) => 
-        prevIndex === wallpapers.length - 1 ? 0 : prevIndex + 1
-      );
+      nextVideo(); // Use the context function
       setIsTransitioning(false);
     }, 300); // 300ms fade transition
   };
@@ -51,10 +50,15 @@ const BackgroundVideo = forwardRef((props, ref) => {
     }
   };
 
+  // Only render when in custom mode
+  if (mode !== 'custom') {
+    return null;
+  }
+
   return (
     <video
       ref={videoRef}
-      key={currentVideoIndex} // Force re-render when video changes
+      key={customVideoIndex} // Force re-render when video changes
       className={`
         fixed top-0 left-0 w-full h-full object-cover -z-50
         transition-opacity duration-300 ease-in-out
@@ -67,7 +71,7 @@ const BackgroundVideo = forwardRef((props, ref) => {
       onLoadedData={handleVideoLoad}
       onError={(e) => console.error('Video load error:', e)}
     >
-      <source src={wallpapers[currentVideoIndex]} type="video/mp4" />
+      <source src={wallpapers[customVideoIndex]} type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   );
