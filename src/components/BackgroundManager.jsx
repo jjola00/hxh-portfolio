@@ -14,7 +14,7 @@ export const useBackground = () => {
 
 export const BackgroundProvider = ({ children }) => {
   const [mode, setMode] = useState('ambient'); // 'ambient' or 'custom'
-  const [ambientEffect, setAmbientEffect] = useState('aurora'); // 'aurora', 'swirl', 'shift', 'coalesce', 'pipeline'
+  const [ambientEffect, setAmbientEffect] = useState('coalesce'); // 'aurora', 'swirl', 'shift', 'coalesce', 'pipeline'
   const [customVideoIndex, setCustomVideoIndex] = useState(0);
 
   // Load preferences from localStorage on mount
@@ -24,15 +24,15 @@ export const BackgroundProvider = ({ children }) => {
       const savedEffect = localStorage.getItem('ambientEffect');
       const savedVideoIndex = localStorage.getItem('customVideoIndex');
 
-      // Always default to ambient mode with Aurora effect if no saved preferences
+      // Always default to ambient mode with Coalesce effect if no saved preferences
       setMode(savedMode || 'ambient');
-      setAmbientEffect(savedEffect || 'aurora');
+      setAmbientEffect(savedEffect || 'coalesce');
       setCustomVideoIndex(savedVideoIndex ? parseInt(savedVideoIndex) : 0);
     } catch (error) {
       console.error('Error loading background preferences:', error);
       // Fallback to defaults
       setMode('ambient');
-      setAmbientEffect('aurora');
+      setAmbientEffect('coalesce');
       setCustomVideoIndex(0);
     }
   }, []);

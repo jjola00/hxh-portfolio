@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 
-const AmbientBackground = ({ effect = 'aurora' }) => {
+const AmbientBackground = ({ effect = 'coalesce' }) => {
   // Generate iframe content with the selected effect
   const iframeContent = useMemo(() => {
     return `
