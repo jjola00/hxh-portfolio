@@ -114,88 +114,100 @@ const MusicSection = () => {
 
   return (
     <div className="w-full h-auto">
-      <div className="grid grid-cols-12 gap-4 h-full">
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-50%);
+          }
+        }
+        .animate-scroll {
+          animation: scroll 20s linear infinite;
+        }
+      `}</style>
+      {/* TOP ROW */}
+      <div className="grid grid-cols-12 gap-4 mb-8">
         
         {/* Top Left: Rotating Vinyl - Now Playing */}
-        <div className="col-span-12 md:col-span-4 lg:col-span-3 flex flex-col items-start justify-start">
-          <div className="relative w-24 h-24 md:w-32 md:h-32">
+        <div className="col-span-12 md:col-span-4 flex flex-col items-start justify-start">
+          <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56">
             {currentTrack?.image ? (
-              <div className={`w-full h-full rounded-full border-4 border-accent/50 overflow-hidden ${currentTrack.isPlaying ? 'animate-spin' : ''}`} style={{animationDuration: '3s'}}>
+              <div className={`w-full h-full rounded-full border-4 border-[#FEFE5B]/50 overflow-hidden ${currentTrack.isPlaying ? 'animate-spin' : ''}`} style={{animationDuration: '3s'}}>
                 <img 
                   src={currentTrack.image} 
                   alt="Album art" 
                   className="w-full h-full object-cover"
                 />
                 {/* Vinyl record center */}
-                <div className="absolute top-1/2 left-1/2 w-6 h-6 bg-black rounded-full -translate-x-1/2 -translate-y-1/2 border-2 border-gray-600">
-                  <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-gray-800 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute top-1/2 left-1/2 w-8 h-8 md:w-12 md:h-12 bg-black rounded-full -translate-x-1/2 -translate-y-1/2 border-2 border-gray-600">
+                  <div className="absolute top-1/2 left-1/2 w-3 h-3 md:w-4 md:h-4 bg-gray-800 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
                 </div>
               </div>
             ) : (
-              <div className="w-full h-full rounded-full border-4 border-accent/50 bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center">
-                <span className="text-3xl">🎵</span>
+              <div className="w-full h-full rounded-full border-4 border-[#FEFE5B]/50 bg-gradient-to-br from-[#FEFE5B]/20 to-[#FEFE5B]/40 flex items-center justify-center">
+                <span className="text-4xl md:text-6xl">🎵</span>
               </div>
             )}
           </div>
-          <div className="text-left mt-3">
-            <p className="text-sm text-white/60 font-light">
+          <div className="text-center mt-4">
+            <p className="text-xs sm:text-sm md:text-base text-white">
               {currentTrack?.isPlaying ? 'Now Playing' : 'Last Played'}
             </p>
             {currentTrack && (
-              <div className="mt-1">
-                <p className="text-base font-semibold text-accent">{currentTrack.name}</p>
-                <p className="text-sm font-light text-white/80">{currentTrack.artist}</p>
+              <div className="mt-2">
+                <p className="text-2xl sm:text-3xl md:text-4xl font-semibold" style={{color: '#FEFE5B'}}>{currentTrack.name}</p>
+                <p className="text-lg sm:text-xl md:text-2xl text-white">{currentTrack.artist}</p>
               </div>
             )}
           </div>
         </div>
 
-        {/* Center: Spotify Data */}
-        <div className="col-span-12 md:col-span-5 lg:col-span-6">
-          <div className="grid grid-cols-2 gap-3 h-full">
-            
-            {/* Top Artists */}
-            <div className="bg-background/20 backdrop-blur-[6px] border border-accent/30 rounded-lg p-4 h-48">
-              <h3 className="text-lg font-semibold text-accent mb-3">Top Artists</h3>
-              <div className="space-y-2 overflow-y-auto h-32">
-                {topArtists.map((artist, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <span className="text-sm text-accent w-6 font-semibold">{index + 1}</span>
+        {/* Top Center: Spotify Data - Side by Side */}
+        <div className="col-span-12 md:col-span-4 grid grid-cols-2 gap-4">
+          
+          {/* Top Artists */}
+          <div className="h-80">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl mb-4 font-semibold" style={{color: '#FEFE5B'}}>Top Artists</h3>
+            <div className="h-64 overflow-hidden relative">
+              <div className="animate-scroll">
+                {[...topArtists, ...topArtists].map((artist, index) => (
+                  <div key={`artist-${index}`} className="flex items-center space-x-3 py-2 whitespace-nowrap">
+                    <span className="text-base w-8" style={{color: '#FEFE5B'}}>{(index % topArtists.length) + 1}</span>
                     {artist.image && (
-                      <img src={artist.image} alt={artist.name} className="w-8 h-8 rounded-full" />
+                      <img src={artist.image} alt={artist.name} className="w-10 h-10 rounded-full" />
                     )}
-                    <p className="text-sm truncate flex-1 text-white font-light">{artist.name}</p>
+                    <p className="text-base text-white truncate">{artist.name}</p>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-white/60 mt-2 font-light">Spotify Data</p>
             </div>
+            <p className="text-xs text-white/60 mt-2">Spotify Data</p>
+          </div>
 
-            {/* Top Tracks */}
-            <div className="bg-background/20 backdrop-blur-[6px] border border-accent/30 rounded-lg p-4 h-48">
-              <h3 className="text-lg font-semibold text-accent mb-3">Top Tracks</h3>
-              <div className="space-y-2 overflow-y-auto h-32">
-                {topTracks.map((track, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <span className="text-sm text-accent w-6 font-semibold">{index + 1}</span>
+          {/* Top Tracks */}
+          <div className="h-80">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl mb-4 font-semibold" style={{color: '#FEFE5B'}}>Top Tracks</h3>
+            <div className="h-64 overflow-hidden relative">
+              <div className="animate-scroll">
+                {[...topTracks, ...topTracks].map((track, index) => (
+                  <div key={`track-${index}`} className="flex items-center space-x-3 py-2 whitespace-nowrap">
+                    <span className="text-base w-8" style={{color: '#FEFE5B'}}>{(index % topTracks.length) + 1}</span>
                     {track.image && (
-                      <img src={track.image} alt={track.name} className="w-8 h-8 rounded" />
+                      <img src={track.image} alt={track.name} className="w-10 h-10 rounded" />
                     )}
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm truncate text-white font-light">{track.name}</p>
-                    </div>
+                    <p className="text-base text-white truncate">{track.name}</p>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-white/60 mt-2 font-light">Spotify Data</p>
             </div>
+            <p className="text-xs text-white/60 mt-2">Spotify Data</p>
           </div>
         </div>
 
-        {/* Right: Profile & Controls */}
-        <div className="col-span-12 md:col-span-3 lg:col-span-3 flex flex-col">
-          
-          {/* Top: Profile */}
+        {/* Top Right: Profile */}
+        <div className="col-span-12 md:col-span-4 flex flex-col items-end justify-start">
           <div className="text-center mb-6">
             <a 
               href={userProfile?.url || 'https://open.spotify.com'}
@@ -203,65 +215,67 @@ const MusicSection = () => {
               rel="noopener noreferrer"
               className="block"
             >
-              <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-background/30 hover:opacity-80 transition-opacity">
+              <div className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-3 rounded-full overflow-hidden bg-background/30 hover:opacity-80 transition-opacity">
                 {userProfile?.image ? (
                   <img src={userProfile.image} alt="Profile" className="w-full h-full object-cover" />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-lg">👤</div>
+                  <div className="w-full h-full flex items-center justify-center text-3xl">👤</div>
                 )}
               </div>
             </a>
-            <p className="text-base font-semibold text-accent">Jay</p>
-            <p className="text-sm text-white font-light">{userProfile?.savedCount || 0} Liked Songs</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-semibold" style={{color: '#FEFE5B'}}>Jay</p>
+            <p className="text-lg sm:text-l md:text-2xl text-white">{userProfile?.savedCount || 0} Liked Songs</p>
           </div>
-
-          {/* Time Period Selector */}
-          <div className="mb-6">
-            <select 
-              value={selectedPeriod}
-              onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="w-full bg-background/20 backdrop-blur-[6px] border border-accent/30 rounded px-3 py-2 text-sm text-white font-light focus:outline-none focus:border-accent"
-            >
-              {Object.entries(TIME_PERIODS).map(([key, label]) => (
-                <option key={key} value={key} className="bg-background text-white">{label}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Bottom: Last.fm Stats in container */}
-          <div className="bg-background/20 backdrop-blur-[6px] border border-accent/30 rounded-lg p-4">
-            <div className="space-y-4">
-              {/* Top Song - text only */}
-              <div className="text-center">
-                <p className="text-sm font-semibold text-accent">Top Song</p>
-                <p className="text-sm text-white font-light truncate">{lastfmStats.topTrack?.name || 'N/A'}</p>
-                <p className="text-xs text-accent font-semibold">{lastfmStats.topTrack?.playcount || 0} plays</p>
-              </div>
-              
-              {/* Top Artist - text only */}
-              <div className="text-center">
-                <p className="text-sm font-semibold text-accent">Top Artist</p>
-                <p className="text-sm text-white font-light truncate">{lastfmStats.topArtist?.name || 'N/A'}</p>
-                <p className="text-xs text-accent font-semibold">{lastfmStats.topArtist?.playcount || 0} plays</p>
-              </div>
-
-              {/* Album - with artwork */}
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-2 rounded overflow-hidden bg-background/30">
-                  {lastfmStats.topAlbum?.image ? (
-                    <img src={lastfmStats.topAlbum.image} alt="Album" className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-lg">💿</div>
-                  )}
-                </div>
-                <p className="text-sm font-semibold text-accent">Album</p>
-                <p className="text-sm text-white font-light truncate">{lastfmStats.topAlbum?.name || 'N/A'}</p>
-                <p className="text-xs text-accent font-semibold">{lastfmStats.topAlbum?.playcount || 0} plays</p>
-              </div>
-            </div>
-          </div>
-
         </div>
+      </div>
+
+      {/* BOTTOM ROW */}
+      <div className="flex flex-col items-center justify-center mt-8">
+        
+        {/* Time Period Selector */}
+        <div className="mb-6 w-48">
+          <select 
+            value={selectedPeriod}
+            onChange={(e) => setSelectedPeriod(e.target.value)}
+            className="w-full bg-background/20 backdrop-blur-[6px] border border-accent/30 rounded px-3 py-2 text-sm text-white font-light focus:outline-none focus:border-accent"
+          >
+            {Object.entries(TIME_PERIODS).map(([key, label]) => (
+              <option key={key} value={key} className="bg-background text-white">{label}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Stats Row - All on same line */}
+        <div className="grid grid-cols-3 gap-12 text-center items-end">
+          {/* Top Song - Smaller */}
+          <div>
+            <p className="text-lg sm:text-xl md:text-2xl font-semibold" style={{color: '#FEFE5B'}}>Top Song</p>
+            <p className="text-sm sm:text-base md:text-lg text-white truncate">{lastfmStats.topTrack?.name || 'N/A'}</p>
+            <p className="text-xs sm:text-sm" style={{color: '#FEFE5B'}}>{lastfmStats.topTrack?.playcount || 0} plays</p>
+          </div>
+          
+          {/* Top Artist - Smaller */}
+          <div>
+            <p className="text-lg sm:text-xl md:text-2xl font-semibold" style={{color: '#FEFE5B'}}>Top Artist</p>
+            <p className="text-sm sm:text-base md:text-lg text-white truncate">{lastfmStats.topArtist?.name || 'N/A'}</p>
+            <p className="text-xs sm:text-sm" style={{color: '#FEFE5B'}}>{lastfmStats.topArtist?.playcount || 0} plays</p>
+          </div>
+
+          {/* Album - Larger with artwork */}
+          <div className="flex flex-col items-center">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded overflow-hidden bg-background/30 mb-3">
+              {lastfmStats.topAlbum?.image ? (
+                <img src={lastfmStats.topAlbum.image} alt="Album" className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-4xl">💿</div>
+              )}
+            </div>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-semibold" style={{color: '#FEFE5B'}}>Album</p>
+            <p className="text-lg sm:text-xl md:text-2xl text-white truncate">{lastfmStats.topAlbum?.name || 'N/A'}</p>
+            <p className="text-base sm:text-lg" style={{color: '#FEFE5B'}}>{lastfmStats.topAlbum?.playcount || 0} plays</p>
+          </div>
+        </div>
+
       </div>
     </div>
   );
