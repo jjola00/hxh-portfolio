@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import ItemLayout from "./ItemLayout";
 import Link from "next/link";
+import MusicSection from "./MusicSection";
 
 const AboutDetails = () => {
   return (
@@ -107,6 +108,11 @@ const AboutDetails = () => {
               loading="lazy"
             />
           </Link>
+        </ItemLayout>
+
+        {/* Music Section */}
+        <ItemLayout className={"col-span-full !p-4"}>
+          <MusicSection />
         </ItemLayout>
       </div>
     </section>

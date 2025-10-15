@@ -49,6 +49,11 @@ const fetchSpotifyData = async (endpoint) => {
       }
     });
 
+    // Handle 204 No Content (no currently playing track) BEFORE checking ok
+    if (response.status === 204) {
+      return null;
+    }
+
     if (!response.ok) {
       if (response.status === 401) {
         // Token expired, clear it and retry once
@@ -63,16 +68,16 @@ const fetchSpotifyData = async (endpoint) => {
           }
         });
         
+        // Handle 204 on retry too
+        if (retryResponse.status === 204) {
+          return null;
+        }
+        
         if (!retryResponse.ok) {
           throw new Error(`Spotify API error: ${retryResponse.status}`);
         }
         
         return await retryResponse.json();
-      }
-      
-      // Handle 204 No Content (no currently playing track)
-      if (response.status === 204) {
-        return null;
       }
       
       throw new Error(`Spotify API error: ${response.status}`);
@@ -188,18 +193,22 @@ export const getUserPlaylists = async (limit = 5) => {
 // Get user profile information
 export const getUserProfile = async () => {
   try {
-    const data = await fetchSpotifyData('/me');
+    const [profileData, savedCount] = await Promise.all([
+      fetchSpotifyData('/me'),
+      getSavedTracksCount()
+    ]);
     
-    if (!data) return null;
+    if (!profileData) return null;
 
     return {
-      displayName: data.display_name,
-      email: data.email,
-      followers: data.followers.total,
-      country: data.country,
-      product: data.product, // free, premium
-      image: data.images[0]?.url || null,
-      url: data.external_urls?.spotify || null
+      displayName: profileData.display_name,
+      email: profileData.email,
+      followers: profileData.followers.total,
+      country: profileData.country,
+      product: profileData.product, // free, premium
+      image: profileData.images[0]?.url || null,
+      url: profileData.external_urls?.spotify || null,
+      savedCount: savedCount
     };
   } catch (error) {
     console.error('Error fetching user profile:', error);
