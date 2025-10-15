@@ -132,7 +132,7 @@ const MusicSection = () => {
         
         {/* Top Left: Rotating Vinyl - Now Playing */}
         <div className="col-span-12 md:col-span-4 flex flex-col items-start justify-start">
-          <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56">
+          <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 ml-2 md:ml-4">
             {currentTrack?.image ? (
               <div className={`w-full h-full rounded-full border-4 border-[#FEFE5B]/50 overflow-hidden ${currentTrack.isPlaying ? 'animate-spin' : ''}`} style={{animationDuration: '3s'}}>
                 <img 
@@ -183,7 +183,6 @@ const MusicSection = () => {
                 ))}
               </div>
             </div>
-            <p className="text-xs text-white/60 mt-2">Spotify Data</p>
           </div>
 
           {/* Top Tracks */}
@@ -202,7 +201,6 @@ const MusicSection = () => {
                 ))}
               </div>
             </div>
-            <p className="text-xs text-white/60 mt-2">Spotify Data</p>
           </div>
         </div>
 
@@ -223,8 +221,6 @@ const MusicSection = () => {
                 )}
               </div>
             </a>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-semibold" style={{color: '#FEFE5B'}}>Jay</p>
-            <p className="text-lg sm:text-l md:text-2xl text-white">{userProfile?.savedCount || 0} Liked Songs</p>
           </div>
         </div>
       </div>
