@@ -2,6 +2,7 @@
 
 import AboutDetails from "@/components/about";
 import AmbientBackground from "@/components/AmbientBackground";
+import BackgroundVideo from "@/components/BackgroundVideo";
 import BackgroundControls from "@/components/BackgroundControls";
 import { useBackground } from "@/components/BackgroundManager";
 
@@ -13,7 +14,9 @@ export default function About() {
       {/* Dynamic Background System */}
       {mode === 'ambient' ? (
         <AmbientBackground effect={ambientEffect} />
-      ) : null}
+      ) : (
+        <BackgroundVideo />
+      )}
 
       {/* Background Controls */}
       <BackgroundControls />

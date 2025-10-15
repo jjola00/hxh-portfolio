@@ -2,6 +2,7 @@
 
 import Form from "@/components/contact/Form";
 import AmbientBackground from "@/components/AmbientBackground";
+import BackgroundVideo from "@/components/BackgroundVideo";
 import BackgroundControls from "@/components/BackgroundControls";
 import { useBackground } from "@/components/BackgroundManager";
 
@@ -13,7 +14,9 @@ export default function Contact() {
       {/* Dynamic Background System */}
       {mode === 'ambient' ? (
         <AmbientBackground effect={ambientEffect} />
-      ) : null}
+      ) : (
+        <BackgroundVideo />
+      )}
 
       {/* Background Controls */}
       <BackgroundControls />
