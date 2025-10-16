@@ -6,8 +6,8 @@ const InfiniteCarousel = ({ items, direction = 'left', speed = 20 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(null);
 
-  // Double the items array to make carousel twice as long
-  const doubledItems = [...items, ...items];
+  // Create multiple copies of items for seamless loop (like music section)
+  const extendedItems = [...items, ...items, ...items, ...items]; // 4 copies for very long carousel
   
   const animationClass = direction === 'left' ? 'animate-scroll-left' : 'animate-scroll-right';
   const animationDuration = `${speed}s`;
@@ -30,56 +30,25 @@ const InfiniteCarousel = ({ items, direction = 'left', speed = 20 }) => {
           width: 'fit-content'
         }}
       >
-        {/* First set of doubled logos */}
-        {doubledItems.map((item, index) => (
-          <div key={`first-${index}`} className="flex items-center gap-4 sm:gap-6 md:gap-8">
-            <img
-              src={item.logo}
-              alt={item.alt}
-              title={item.name}
-              onClick={() => handleLogoClick(item.name)}
-              className="
-                w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20
-                object-cover object-center
-                filter grayscale hover:grayscale-0
-                transition-all duration-300 ease-in-out
-                hover:scale-110
-                cursor-pointer
-                rounded-lg
-              "
-            />
-            {index < doubledItems.length - 1 && (
-              <span className="text-white/30 text-lg sm:text-xl md:text-2xl select-none">
-                —
-              </span>
-            )}
-          </div>
-        ))}
-        
-        {/* Duplicate set for seamless loop */}
-        {doubledItems.map((item, index) => (
-          <div key={`second-${index}`} className="flex items-center gap-4 sm:gap-6 md:gap-8">
-            <img
-              src={item.logo}
-              alt={item.alt}
-              title={item.name}
-              onClick={() => handleLogoClick(item.name)}
-              className="
-                w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20
-                object-cover object-center
-                filter grayscale hover:grayscale-0
-                transition-all duration-300 ease-in-out
-                hover:scale-110
-                cursor-pointer
-                rounded-lg
-              "
-            />
-            {index < doubledItems.length - 1 && (
-              <span className="text-white/30 text-lg sm:text-xl md:text-2xl select-none">
-                —
-              </span>
-            )}
-          </div>
+        {/* Render extended items - no dashes, just logos */}
+        {extendedItems.map((item, index) => (
+          <img
+            key={`logo-${index}`}
+            src={item.logo}
+            alt={item.alt}
+            title={item.name}
+            onClick={() => handleLogoClick(item.name)}
+            className="
+              w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20
+              object-cover object-center
+              filter grayscale hover:grayscale-0
+              transition-all duration-300 ease-in-out
+              hover:scale-110
+              cursor-pointer
+              rounded-lg
+              flex-shrink-0
+            "
+          />
         ))}
       </div>
 
@@ -99,11 +68,11 @@ const InfiniteCarousel = ({ items, direction = 'left', speed = 20 }) => {
       <style jsx>{`
         @keyframes scroll-left {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-25%); }
         }
 
         @keyframes scroll-right {
-          0% { transform: translateX(-50%); }
+          0% { transform: translateX(-25%); }
           100% { transform: translateX(0); }
         }
 

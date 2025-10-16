@@ -59,7 +59,7 @@ const AboutDetails = () => {
           className={" col-span-full xs:col-span-6 lg:col-span-4 text-white"}
         >
           <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
-            5+ <sub className="font-semibold text-base">technologies</sub>
+            8+ <sub className="font-semibold text-base">technologies</sub>
           </p>
         </ItemLayout>
 
