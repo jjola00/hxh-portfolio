@@ -13,11 +13,11 @@ const BackgroundControls = () => {
   } = useBackground();
 
   const effects = [
-    { id: 'coalesce', name: 'Coalesce' },
+    { id: 'pipeline', name: 'Pipeline' },
     { id: 'swirl', name: 'Swirl' },
     { id: 'shift', name: 'Shift' },
     { id: 'aurora', name: 'Aurora' },
-    { id: 'pipeline', name: 'Pipeline' }
+    { id: 'coalesce', name: 'Coalesce' }
   ];
 
   return (

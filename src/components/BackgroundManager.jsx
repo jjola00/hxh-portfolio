@@ -14,7 +14,7 @@ export const useBackground = () => {
 
 export const BackgroundProvider = ({ children }) => {
   const [mode, setMode] = useState('ambient'); // 'ambient' or 'custom'
-  const [ambientEffect, setAmbientEffect] = useState('coalesce'); // 'aurora', 'swirl', 'shift', 'coalesce', 'pipeline'
+  const [ambientEffect, setAmbientEffect] = useState('pipeline'); // 'aurora', 'swirl', 'shift', 'coalesce', 'pipeline'
   const [customVideoIndex, setCustomVideoIndex] = useState(0);
 
   // Load preferences from localStorage on mount
