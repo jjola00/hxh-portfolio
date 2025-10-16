@@ -88,8 +88,8 @@ const AboutDetails = () => {
         >
           <img
             className="w-full h-auto"
-            src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api/top-langs?username=slocksert&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
-            alt="slocksert"
+            src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api/top-langs?username=jjola00&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
+            alt="jjola00"
             width={400}
             height={300}
             loading="lazy"
@@ -97,54 +97,32 @@ const AboutDetails = () => {
         </ItemLayout>
 
         <ItemLayout className={"col-span-full md:col-span-8 !p-0"}>
-          <img
-            className="w-full h-auto"
-            src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api?username=slocksert&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false`}
-            alt="slocksert"
-            width={800}
-            height={300}
-            loading="lazy"
-          />
+          <div className="relative">
+            <img
+              className="w-full h-auto"
+              src={`https://github-readme-activity-graph.vercel.app/graph?username=jjola00&theme=react-dark&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&line=FEFE5B&point=FFFFFF&area=true&area_color=1F2937`}
+              alt="jjola00"
+              width={800}
+              height={300}
+              loading="lazy"
+            />
+            <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm text-white px-2 py-1 rounded text-xs font-medium">
+              Last 30 Days
+            </div>
+          </div>
         </ItemLayout>
 
         <ItemLayout className={"col-span-full"}>
           <img
             className="w-full h-auto"
             src={`https://skillicons.dev/icons?i=appwrite,aws,babel,bootstrap,cloudflare,css,d3,docker,figma,firebase,gatsby,git,github,graphql,html,ipfs,js,jquery,kubernetes,linux,mongodb,mysql,netlify,nextjs,nodejs,npm,postgres,react,redux,replit,sass,supabase,tailwind,threejs,vercel,vite,vscode,yarn`}
-            alt="slocksert"
+            alt="jjola00"
             width={1200}
             height={100}
             loading="lazy"
           />
         </ItemLayout>
 
-        <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
-          <img
-            className="w-full h-auto"
-            src={`${process.env.NEXT_PUBLIC_GITHUB_STREAK_STATS_URL}?user=slocksert&theme=dark&hide_border=true`}
-            alt="slocksert"
-            width={600}
-            height={300}
-            loading="lazy"
-          />
-        </ItemLayout>
-
-        <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
-          <Link
-            href="https://github.com/slocksert/hxh-portfolio"
-            target="_blank"
-            className="w-full"
-          >
-            <img
-              className="w-full h-auto"
-              src={`${process.env.NEXT_PUBLIC_GITHUB_STATS_URL}/api/pin/?username=slocksert&repo=hxh-portfolio&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false&description_lines_count=2`}
-              alt="slocksert"
-              width={600}
-              height={300}
-              loading="lazy"
-            />
-          </Link>
-        </ItemLayout>
 
         {/* Music Section */}
         <ItemLayout className={"col-span-full !p-4"}>
