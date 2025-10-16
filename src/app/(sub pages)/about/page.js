@@ -27,7 +27,7 @@ export default function About() {
             About Me
           </h1>
           <p className="font-light text-foreground text-lg mt-2">
-            Meet the HxH fan behind this website
+            Hey! I'm Oluwajomil- Jay Jay
           </p>
         </div>
       </div>
