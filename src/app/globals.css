@@ -20,6 +20,34 @@
   .custom-bg {
     @apply bg-background/25 border border-white/30 border-solid backdrop-blur-[6px] shadow-glass-inset hover:shadow-glass-sm;
   }
+
+  /* Glass-morphism scrollbar for all scrollable elements */
+  .glass-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .glass-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+  }
+
+  .glass-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+
+  .glass-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.6);
+  }
+
+  /* Firefox scrollbar */
+  .glass-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(59, 130, 246, 0.4) rgba(0, 0, 0, 0.1);
+  }
 }
 
 @keyframes move {

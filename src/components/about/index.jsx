@@ -3,6 +3,7 @@ import ItemLayout from "./ItemLayout";
 import Link from "next/link";
 import MusicSection from "./MusicSection";
 import InfiniteCarousel from "./InfiniteCarousel";
+import ProjectCard from "./ProjectCard";
 
 // Technology logos data
 const technologyLogos = [
@@ -26,6 +27,64 @@ const companyLogos = [
   { name: 'DevEire', logo: '/experience/Deveire.jpeg', alt: 'DevEire' }
 ];
 
+// Projects data (user-provided)
+const projects = [
+  {
+    id: 1,
+    title: "StableWise",
+    description:
+      "StableWise is an online marketplace for showjumping horses and ponies(literally Linkedin for horses), featuring verified international competition data, AI-powered performance analysis, and advanced search tools to empower serious buyers and sellers. Built with a React TypeScript frontend, Supabase backend for secure real-time data and authentication, Netlify deployment, and Zoho email integration, it's live at stablewise.org",
+    status: "MVP",
+    imageUrl: "/projects/stablewise-demo.png",
+    demoLink: "https://stablewise.org",
+  },
+  {
+    id: 2,
+    title: "Aicoholics",
+    description:
+      "A deep learning project exploring vehicle classification using multiple neural network architectures, with practical applications in automated toll systems. Implemented the DenseNet model and data preprocessing pipeline. Compares DenseNet, a custom CNN, and AlexNet to classify vehicles without license plate recognition. Built with Python, PyTorch, and Flask with notebooks, visualization, web UI, trained models, evaluation scripts, and DB management.",
+    status: "Completed",
+    imageUrl: "/projects/aicoholics-demo.png",
+    demoLink: "https://github.com/ISE-CS4445-AI/ai-project-aicoholics",
+  },
+  {
+    id: 3,
+    title: "Ecosim",
+    description:
+      "Ecosim is a Java-based interactive simulation between animals, plants, and environments across desert and grassland biomes. Users can configure setups and monitor real-time evolution through daily reports. Built with Maven, modular architecture using Builder and Observer patterns, JSON-configured biomes/weather, and comprehensive unit tests, with easy launch scripts.",
+    status: "Completed",
+    imageUrl: "/projects/ecosim-demo.png",
+    demoLink: "https://github.com/darragh0/ecosim",
+  },
+  {
+    id: 4,
+    title: "Fuzzle",
+    description:
+      "Fuzzle is a cross-platform mobile app that helps parents track their children's study habits, connected to a Raspberry Pi-based physical \"pet cat\" device that indicates focus vs. distraction. Built with Flutter (and a React Native version), includes Bluetooth pairing, data storage, tests, code quality checks, accessibility, and launch scripts for Linux/Windows/Android.",
+    status: "MVP",
+    imageUrl: "/projects/fuzzle-demo.jpg",
+    demoLink: "https://github.com/jjola00/Fuzzle",
+  },
+  {
+    id: 5,
+    title: "Zork",
+    description:
+      "Zork is a text-based adventure game inspired by The House in Fata Morgana with a GUI and custom artwork. Updated with build scripts and docs for modern systems while preserving original code as a snapshot. Built in C++ using Qt with quick-launch scripts for Linux/macOS and Windows.",
+    status: "Completed",
+    imageUrl: "/projects/zork-demo.png",
+    demoLink: "https://github.com/jjola00/FinalZork",
+  },
+  {
+    id: 6,
+    title: "Leet Code Adventures",
+    description:
+      "An ongoing diary capturing LeetCode attempts and enhanced solutions, organized by topics like two pointers and binary search. Initially in C++, now in Python. Inspired by prep for AWS SDE Interview and future internships.",
+    status: "Ongoing",
+    imageUrl: "/projects/leetcode-demo.jpg",
+    demoLink: "https://github.com/jjola00/LeetCodeAdventures",
+  },
+];
+
 const AboutDetails = () => {
   return (
     <section className="w-full bg-gradient-to-r ">
@@ -44,7 +103,7 @@ const AboutDetails = () => {
             " col-span-full lg:col-span-8 row-span-2 flex-col items-start"
           }
         >
-          <h2 className="text-xl md:text-2xl text-left w-full capitalize">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold" style={{color: '#FEFE5B'}}>
             Software Developer @ ISE
           </h2>
           <p className="font-light text-xs sm:text-sm md:text-base">
@@ -58,17 +117,17 @@ const AboutDetails = () => {
         <ItemLayout
           className={" col-span-full xs:col-span-6 lg:col-span-4 text-white"}
         >
-          <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
-            8+ <sub className="font-semibold text-base">technologies</sub>
+          <p className="font-semibold w-full text-left text-2xl sm:text-5xl" style={{color: '#FEFE5B'}}>
+            8+ <sub className="font-semibold text-base" style={{color: 'white'}}>technologies</sub>
           </p>
         </ItemLayout>
 
         <ItemLayout
           className={"col-span-full xs:col-span-6 lg:col-span-4 text-white"}
         >
-          <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
+          <p className="font-semibold w-full text-left text-2xl sm:text-5xl" style={{color: '#FEFE5B'}}>
             1+{" "}
-            <sub className="font-semibold text-base">year of experience</sub>
+            <sub className="font-semibold text-base" style={{color: 'white'}}>year of experience</sub>
           </p>
         </ItemLayout>
       </div>
@@ -113,14 +172,18 @@ const AboutDetails = () => {
         </ItemLayout>
 
         <ItemLayout className={"col-span-full"}>
-          <img
-            className="w-full h-auto"
-            src={`https://skillicons.dev/icons?i=appwrite,aws,babel,bootstrap,cloudflare,css,d3,docker,figma,firebase,gatsby,git,github,graphql,html,ipfs,js,jquery,kubernetes,linux,mongodb,mysql,netlify,nextjs,nodejs,npm,postgres,react,redux,replit,sass,supabase,tailwind,threejs,vercel,vite,vscode,yarn`}
-            alt="jjola00"
-            width={1200}
-            height={100}
-            loading="lazy"
-          />
+          <div className="space-y-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 font-semibold" style={{color: '#FEFE5B'}}>
+              Projects
+            </h2>
+            <div className="h-[600px] overflow-y-auto glass-scrollbar pr-2">
+              <div className="space-y-8">
+                {projects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            </div>
+          </div>
         </ItemLayout>
 
 

@@ -65,7 +65,8 @@ export const BackgroundProvider = ({ children }) => {
   const switchToCustom = () => setMode('custom');
   const switchToAmbient = () => setMode('ambient');
   const setEffect = (effect) => setAmbientEffect(effect);
-  const nextVideo = () => setCustomVideoIndex(prev => (prev + 1) % 4); // 4 videos total
+  // Advance to next video; actual wrap is handled where videos are read (by list length)
+  const nextVideo = () => setCustomVideoIndex(prev => prev + 1);
 
   const value = {
     mode,
